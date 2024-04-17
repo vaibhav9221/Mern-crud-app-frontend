@@ -14,7 +14,7 @@ const App = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/tasks');
+      const response = await axios.get('https://mern-curd-app-backend.onrender.com/tasks');
       setTasks(response.data);
     } catch (error) {
       console.error(error);
@@ -26,10 +26,10 @@ const App = () => {
     try {
       if (!editTask) {
         // If editTask is null, it means we're adding a new task
-        await axios.post('http://localhost:5000/tasks', newTask);
+        await axios.post('https://mern-curd-app-backend.onrender.com/tasks', newTask);
       } else {
         // If editTask is not null, it means we're editing an existing task
-        await axios.put(`http://localhost:5000/tasks/${editTask._id}`, newTask);
+        await axios.put(`https://mern-curd-app-backend.onrender.com/tasks/${editTask._id}`, newTask);
         setEditTask(null); // Clear editTask after editing is done
       }
       setNewTask({ title: '', description: '', priority: '', category: '' });
@@ -47,7 +47,7 @@ const App = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/tasks/${id}`);
+      await axios.delete(`https://mern-curd-app-backend.onrender.com/tasks/${id}`);
       fetchTasks();
     } catch (error) {
       console.error(error);
